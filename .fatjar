@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Thu Oct 11 16:07:42 CDT 2012
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=BanList.jar
+manifest.mergeall=true
+manifest.mainclass=
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<jar|bukkit-1.3.1-R2.0.jar>
+includes=
