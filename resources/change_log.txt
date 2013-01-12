@@ -1,0 +1,14 @@
+2.0.3
+[list][*] Added page breaks. Use /banlist page <#>
+[*] Added a config file to set the number of items per page.
+[*] Added the ability to change the path for the location of the .csv file. 
+[*] Added some colors and better formating.
+[*] Added a command to reload the config. /banlist reload
+[*] Small change to package name.
+
+1.1
+[*] Rewrote most of the algorithm, should be more efficient. Also fixed small issue where a "-" in the reason would cause the reason to be truncated.
+
+1.0
+[*] First release
+[/list]

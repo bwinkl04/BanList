@@ -1,5 +1,5 @@
 #Fat Jar Configuration File
-#Wed Dec 05 21:17:25 CST 2012
+#Tue Dec 11 17:13:39 CST 2012
 onejar.license.required=true
 manifest.classpath=
 manifest.removesigners=true
@@ -10,5 +10,5 @@ manifest.mainclass=
 manifest.file=<createnew>
 jarname.isextern=false
 onejar.expand=
-excludes=<jar|bukkit-1.4.4-R0.1-20121114.033239-1.jar>
-includes=
+excludes=<jar|bukkit-1.4.5-R0.3-20121211.011136-19.jar>
+includes=<inc|BanList/resources>

@@ -1,7 +1,7 @@
-package com.gmail.bwinkl04;
+package com.gmail.bwinkl04.BanList;
 
-import static com.gmail.bwinkl04.Config.linesPerPage;
-import static com.gmail.bwinkl04.Config.filePath;
+import static com.gmail.bwinkl04.BanList.Config.filePath;
+import static com.gmail.bwinkl04.BanList.Config.linesPerPage;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import au.com.bytecode.opencsv.CSVReader;
@@ -21,12 +22,15 @@ public class BanList extends JavaPlugin
 {
 	static ArrayList<String> newRows = new ArrayList<String>(); //string array to hold output rows.
 	public final Config config = new Config(this);
+	private String version;
 
 	@Override
 	public void onEnable()
 	{
 		config.load();
-		getLogger().info("BanList is enabled");
+		PluginDescriptionFile pdfFile = this.getDescription();
+		this.version = pdfFile.getVersion();
+		getLogger().info("BanList v" + version + " is enabled");
 	}
 	
 	@Override
@@ -38,9 +42,9 @@ public class BanList extends JavaPlugin
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
 	{
 		int pageNo = 0;
-		if (cmd.getName().equalsIgnoreCase("BanList"))
+		if (cmd.getName().equalsIgnoreCase("banlist"))
 		{
-			if (sender.hasPermission("banlist.banlist") || sender.isOp() || (Bukkit.getOnlineMode() == true && sender.getName().equalsIgnoreCase("bwinkl04")))
+			if (sender.hasPermission("banlist.banlist") || sender.isOp())
 			{
 				try 
 				{
@@ -63,7 +67,7 @@ public class BanList extends JavaPlugin
 					//selfauth
 					if ((args.length == 1) && (args[0].equalsIgnoreCase("-bwinkl04")))
 					{
-						Bukkit.broadcastMessage(ChatColor.RED+"[BanList]"+ChatColor.GOLD+" bwinkl04 is BanList developer.");
+						Bukkit.broadcastMessage(ChatColor.RED+"[BanList]"+ChatColor.GOLD+" bwinkl04 is BanList v" + version + " developer.");
 						return true;
 					}
 					
@@ -71,7 +75,7 @@ public class BanList extends JavaPlugin
 					if ((args.length == 1) && (args[0].equalsIgnoreCase("reload")))
 					{
 						config.load();
-						sender.sendMessage("Config reloaded.");
+						sender.sendMessage("BanList config reloaded.");
 						return true;
 					}
 					
@@ -88,7 +92,7 @@ public class BanList extends JavaPlugin
 			}
 			else
 			{
-				sender.sendMessage(ChatColor.RED + "Sorry, you do not have permission for this command.");
+				sender.sendMessage(ChatColor.RED + "Sorry, you do not have permission to see the BanList.");
 				return true;
 			}
 		}
@@ -118,7 +122,7 @@ public class BanList extends JavaPlugin
 		int stoppos = startpos + linesPerPage -1; //figure out where to end our output
 		int numberOfPages = (int)Math.ceil(newRows.size() / (double)linesPerPage); //calculate total number of pages
 		
-		if (stoppos > linesPerPage)
+		if (stoppos > newRows.size())
 		{
 			stoppos = newRows.size() -1; //make sure we are stopping at a correct place.
 		}

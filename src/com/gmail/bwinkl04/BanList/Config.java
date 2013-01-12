@@ -1,4 +1,4 @@
-package com.gmail.bwinkl04;
+package com.gmail.bwinkl04.BanList;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -8,6 +8,7 @@ public class Config
 	private FileConfiguration config;
 	public static int linesPerPage;
 	public static String filePath;
+	
 	public Config(BanList plugin)
 	{
 		this.plugin = plugin;

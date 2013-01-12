@@ -1,8 +1,8 @@
 name: BanList
-version: 2.0.1
+version: 2.0.3
 description: Shows a list of all player banned using CommandBook
 author: bwinkl04
-main: com.gmail.bwinkl04.BanList
+main: com.gmail.bwinkl04.BanList.BanList
 commands:
   banlist:
     description: Shows a list of banned players, use /banlist page <#> to see additional pages
